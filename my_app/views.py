@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.urls import reverse
 
@@ -6,6 +7,10 @@ articles = {
     'finance':  'Finance Page',
     'politics':  'Politics Page',
 }
+
+def simple_view(request):
+    return render(request, 'my_app/example.html') # .html
+
 
 # Create your views here.
 def num_page_view(request, num_page):
