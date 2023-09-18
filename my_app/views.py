@@ -9,12 +9,20 @@ articles = {
 
 # Create your views here.
 def num_page_view(request, num_page):
-    topics_list = list(articles.keys())
-    topic = topics_list[num_page]
+    try:
+        topics_list = list(articles.keys())
+        topic = topics_list[num_page]
 
-    webpage = reverse('topic-page', args=[topic])
+        if not topic:
+            raise "page number doesn't exist"
 
-    return HttpResponseRedirect(webpage)
+
+        webpage = reverse('topic-page', args=[topic])
+
+        return HttpResponseRedirect(webpage)
+    except IndexError as indexError:
+        raise Http404(f'out of bounds - {indexError}') # this exception thrown here will be later caught by our project-wide error handler
+
 
 
 def news_view(request, topic) -> HttpResponse:
