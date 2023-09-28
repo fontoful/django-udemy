@@ -11,6 +11,8 @@ articles = {
 def simple_view(request):
     return render(request, 'my_app/example.html') # .html
 
+def variable_view(request):
+    return render(request, 'my_app/variable.html')
 
 # Create your views here.
 def num_page_view(request, num_page):
