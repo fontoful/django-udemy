@@ -4,15 +4,17 @@ from django.urls import reverse
 
 articles = {
     'sports': 'Sports Page',
-    'finance':  'Finance Page',
-    'politics':  'Politics Page',
+    'finance': 'Finance Page',
+    'politics': 'Politics Page',
 }
 
+
 def simple_view(request):
-    return render(request, 'my_app/example.html') # .html
+    return render(request, 'my_app/example.html')  # .html
+
 
 def variable_view(request):
-    my_var = { 'first_name': 'Hector', 'last_name': 'Serrano' }
+    my_var = {'first_name': 'Hector', 'last_name': 'Serrano'}
 
     return render(request, 'my_app/variable.html', context=my_var)
 
@@ -25,7 +27,9 @@ def variable_view_with_nested_dict(request):
         'some_dict': {'inside_key': 'inside_value'},
     }
 
-    return render(request, 'my_app/extendedVariable.html', context=my_var_with_nested_dict)
+    return render(
+        request, 'my_app/extendedVariable.html', context=my_var_with_nested_dict
+    )
 
 
 # Create your views here.
@@ -37,20 +41,23 @@ def num_page_view(request, num_page):
         if not topic:
             raise "page number doesn't exist"
 
-
         webpage = reverse('topic-page', args=[topic])
 
         return HttpResponseRedirect(webpage)
     except IndexError as indexError:
-        raise Http404(f'out of bounds - {indexError}') # this exception thrown here will be later caught by our project-wide error handler
-
+        raise Http404(
+            f'out of bounds - {indexError}'
+        )  # this exception thrown here will be later caught by our project-wide error handler
 
 
 def news_view(request, topic) -> HttpResponse:
     try:
         return HttpResponse(articles[topic])
     except:
-        raise Http404("404 GENERIC ERROR") # this exception thrown here will be later caught by our project-wide error handler
+        raise Http404(
+            "404 GENERIC ERROR"
+        )  # this exception thrown here will be later caught by our project-wide error handler
+
 
 def add_view(request, num1, num2) -> HttpResponse:
     result = num1 + num2
