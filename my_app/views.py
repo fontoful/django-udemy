@@ -12,7 +12,9 @@ def simple_view(request):
     return render(request, 'my_app/example.html') # .html
 
 def variable_view(request):
-    return render(request, 'my_app/variable.html')
+    my_var = { 'first_name': 'Hector', 'last_name': 'Serrano' }
+
+    return render(request, 'my_app/variable.html', context=my_var)
 
 # Create your views here.
 def num_page_view(request, num_page):
