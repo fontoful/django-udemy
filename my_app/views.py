@@ -16,6 +16,18 @@ def variable_view(request):
 
     return render(request, 'my_app/variable.html', context=my_var)
 
+
+def variable_view_with_nested_dict(request):
+    my_var_with_nested_dict = {
+        'first_name': 'Hector',
+        'last_name': 'Serrano',
+        'some_list': [1, 2, 3],
+        'some_dict': {'inside_key': 'inside_value'},
+    }
+
+    return render(request, 'my_app/extendedVariable.html', context=my_var_with_nested_dict)
+
+
 # Create your views here.
 def num_page_view(request, num_page):
     try:
