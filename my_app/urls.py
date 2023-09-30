@@ -7,5 +7,6 @@ urlpatterns = [
     # path('<int:num1>/<int:num2>', views.add_view),
     path('', views.simple_view), # domain.com/first_app
     path('variable/', views.variable_view),
-    path('extended/', views.variable_view_with_nested_dict)
+    path('extended/', views.variable_view_with_nested_dict),
+    path('example/', views.simple_view)
 ]
