@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'bmy_app.apps.MyAppConfig',
+    'my_app.apps.MyAppConfig',
     'office.apps.OfficeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
